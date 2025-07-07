@@ -1,0 +1,31 @@
+name: 🚀 NLP API Basit Kontrol
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Kodları indir
+      uses: actions/checkout@v3
+
+    - name: 🐍 Python kur
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: 🔧 Bağımlılıkları yükle
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: ✅ Model dosyası kontrolü
+      run: |
+        if [ ! -f model.pkl ]; then
+          echo "❌ model.pkl bulunamadı"
+          exit 1
+        fi
