@@ -1,5 +1,5 @@
 nlp-env/
 __pycache__/
 *.pyc
-*.pkl
++#*.pkl
 .env
